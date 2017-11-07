@@ -1,4 +1,4 @@
-#login {
+#login-div {
     width: 50%;
     text-align: center;
     margin: auto;
@@ -10,5 +10,9 @@ nav {
 }
 
 body {
-    background: black;
+    background-image:url("../images/cardtable-background.jpg");
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+    background-position: center; 
+    /* background-size: auto;  */
 }

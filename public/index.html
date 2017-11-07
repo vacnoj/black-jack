@@ -16,16 +16,16 @@
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
    <!-- javascript -->
-   <script src="notScript.js"></script>
+   <script src="javascript/notScript.js"></script>
 
    <!-- CSS -->
-   <link rel="stylesheet" href="notStyle.css">
+   <link rel="stylesheet" href="css/notStyle.css">
 
 </head>
 <body>
     <nav>
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">Lola and Snitch</a>
+        <a href="#" class="brand-logo center">Black Jack</a>
         <ul id="nav-mobile" class="right">
         <li><a class="waves-effect waves-light modal-trigger" href="#tutorial-modal"><i class="material-icons">help_outline</i></a></li>
         </ul>
@@ -39,25 +39,25 @@
       <div class="modal-content">
         <h4>Create Account</h4>
           <div> 
-            <label for="player-id">Player ID</label>
-            <input id="player-id" type="text" class="validate">
+            <label for="new-user">User Name</label>
+            <input id="new-user" type="text" class="validate">
   
-            <label for="player-email">Email</label>
-            <input id="player-email" type="email" class="validate">
+            <label for="new-password">Password</label>
+            <input id="new-password" type="password" class="validate">
           </div>
         </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <a id="add-user" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
       </div>
     </div>
 
-    <div id="login"> 
+    <div id="login-div">
       <h4>Log In</h4>
-      <label for="player-id">Player ID</label>
-      <input id="player-id" type="text" class="validate">
-
-      <label for="player-password">Password</label>
-      <input id="player-password" type="password" class="validate">
+      <label for="user-name">User Name</label>
+      <input id="user-name" type="text" class="validate">
+      <label for="user-password">Password</label>
+      <input id="user-password" type="password" class="validate">
+      <button id="login">login</button>
     </div>
   </div>
 
