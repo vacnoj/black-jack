@@ -10,6 +10,7 @@ $(document).ready(function() {
     var card8;
     var dealerTotal;
     var playerTotal;
+    var cardCount = 0;
     function getCard() {
         let index = Math.floor(Math.random()*52);
         var card = cards[index];
@@ -52,13 +53,17 @@ $(document).ready(function() {
         $('#draw').toggle();
         var newCard = '<div class="card"></div>';
         card1 = getCard();
+        cardCount++;
         card2 = getCard();
+        cardCount++;
         card3 = getCard();
+        cardCount++;
         card4 = getCard();
-        $('#dealer').append((`<div class="card">????????</div>`));
-        $('#player').append((`<div class="card">${card3.name} ${card3.suit}</div>`));
-        $('#dealer').append((`<div class="card">${card2.name} ${card2.suit}</div>`));
-        $('#player').append((`<div class="card">${card4.name} ${card4.suit}</div>`));
+        cardCount++;
+        $('#dealer-cards').append((`<div class="card">????????</div>`));
+        $('#player-cards').append((`<div class="card">${card3.name} ${card3.suit}</div>`));
+        $('#dealer-cards').append((`<div class="card">${card2.name} ${card2.suit}</div>`));
+        $('#player-cards').append((`<div class="card">${card4.name} ${card4.suit}</div>`));
         dealerTotal = card2.value;
         playerTotal = card3.value + card4.value;
         if(dealerTotal === 1) {
@@ -68,18 +73,38 @@ $(document).ready(function() {
     });
 
     $('#hit').click(function() {
-        card5 = getCard();
-        playerTotal = card3.value + card4.value + card5.value;
-        $('#player-total').html('Total: ');
+        if (cardCount === 4) {
+            card5 = getCard();
+            playerTotal += card5.value;
+            $('#player-cards').append((`<div class="card">${card5.name} ${card5.suit}</div>`));
+            console.log(cardCount++);
+        } else if (cardCount === 5) {
+            card6 = getCard();
+            playerTotal += card6.value;
+            $('#player-cards').append((`<div class="card">${card6.name} ${card6.suit}</div>`));
+            console.log(cardCount++);
+        } else if (cardCount === 6) {
+            card7 = getCard();
+            playerTotal += card7.value;
+            $('#player-cards').append((`<div class="card">${card7.name} ${card7.suit}</div>`));
+            cardCount++;
+        }
+
+        $('#player-total').empty();
         $('#player-total').append(`${playerTotal}`);
         if (playerTotal > 21) {
             gameOver();
         }
-        $('#player').append((`<div class="card">${card5.name} ${card5.suit}</div>`));
     });
 
     $('#stay').click(function() {
-        dealerTotal += card1;
+        $('#dealer-cards').empty();
+        $('#dealer-cards').append((`<div class="card">${card1.name} ${card1.suit}</div>`));
+        $('#dealer-cards').append((`<div class="card">${card2.name} ${card2.suit}</div>`));
+        dealerTotal += card1.value;
+        $('#dealer-total').empty();
+        $('#dealer-total').append(`${dealerTotal}`);
+        console.log(dealerTotal, playerTotal);
         if(playerTotal > dealerTotal) {
             alert("winner");
         } else alert("Loser");

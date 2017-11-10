@@ -12,6 +12,7 @@ nav {
 .card {
     display: inline-block;
     border: black solid;
+    padding: 2%;
 }
 
 body {
