@@ -11,6 +11,7 @@ $(document).ready(function() {
     var dealerTotal;
     var playerTotal;
     var cardCount = 0;
+    var playerAce;
     function getCard() {
         let index = Math.floor(Math.random()*52);
         var card = cards[index];
@@ -64,8 +65,17 @@ $(document).ready(function() {
         $('#player-cards').append((`<div class="card">${card3.name} ${card3.suit}</div>`));
         $('#dealer-cards').append((`<div class="card">${card2.name} ${card2.suit}</div>`));
         $('#player-cards').append((`<div class="card">${card4.name} ${card4.suit}</div>`));
+       
         dealerTotal = card2.value;
-        playerTotal = card3.value + card4.value;
+       
+        if (card3.value === 1 || card4.value === 1) {
+            playerAce = true;
+            playerTotal = card3.value + card4.value;
+            if (playerTotal <= 11) {
+                playerTotal += 10;
+            }
+        } else playerTotal = card3.value + card4.value;
+        
         if(dealerTotal === 1) {
             $('#dealer-total').append(`ACE showing!`);
         } else $('#dealer-total').append(`${dealerTotal} showing!`);
@@ -93,6 +103,12 @@ $(document).ready(function() {
         $('#player-total').empty();
         $('#player-total').append(`${playerTotal}`);
         if (playerTotal > 21) {
+            if (playerAce) {
+                playerTotal -= 10;
+                playerAce = false;
+                $('#player-total').empty();
+                $('#player-total').append(`${playerTotal}`);
+            }
             gameOver();
         }
     });
