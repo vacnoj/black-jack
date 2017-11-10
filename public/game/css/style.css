@@ -1,0 +1,23 @@
+#login-div {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    border: dashed black;
+}
+
+nav {
+    background: magenta;
+}
+
+.card {
+    display: inline-block;
+    border: black solid;
+}
+
+body {
+    background-image:url("../../images/cardtable-background.jpg");
+    /* background-repeat: no-repeat; */
+    /* background-size: auto;  */
+    background-attachment: fixed;
+    background-position: center;
+}
