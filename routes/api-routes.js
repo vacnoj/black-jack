@@ -1,5 +1,6 @@
 
 var db = require("./../models");
+var users = [];
 
 module.exports = function(app) {
 
@@ -8,8 +9,9 @@ module.exports = function(app) {
     db.User.findAll({}).then(function(results) {
       console.log(results)
       results.forEach(function(e) {
-        res.json(e.username);
+        users.push(e.username);
       });
+      res.json(users);
     });
   });
 
@@ -26,7 +28,3 @@ module.exports = function(app) {
   });
 };
 
-// // display users
-// app.get("/letsplay!", function(req, res) {
-    
-// });

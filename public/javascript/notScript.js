@@ -17,11 +17,14 @@ $(document).ready(function(){
     $('#new-password').val('');
   });
 
-  $('#login').click(function() {
-    event.preventDefault();
-    let user = {
-      username: $('#user-name').val().trim(),
-      password: $('#user-password').val().trim()
-    }
-  });
+  // $('#login').click(function() {
+  //   event.preventDefault();
+  //   app.get("/blackJack", function(req, res) {
+  //     res.sendFile(__dirname + "/game/game.html", function(err) {
+  //       if (err) {
+  //         console.log(err);
+  //       }
+  //     });
+  //   });
+  // });
 });
