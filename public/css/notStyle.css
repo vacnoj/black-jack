@@ -5,6 +5,10 @@
     border: dashed black;
 }
 
+input, label {
+    text-align: center;
+    font-size: 20px !important;
+}
 nav {
     background: brown;
 }

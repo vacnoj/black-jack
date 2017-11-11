@@ -12,7 +12,7 @@ $(document).ready(function(){
       method: "POST",
       url: "/api/users",
       data: newUser
-    }).done(alert('New user created!'));
+    }).done(console.log("User added"));
     $('#new-user').val('');
     $('#new-password').val('');
   });
