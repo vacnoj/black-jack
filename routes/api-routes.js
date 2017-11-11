@@ -36,7 +36,7 @@ app.post("/blackjack", function(req, res) {
     console.log(results);
     if (results) {
       res.sendFile(path.join(__dirname + '/../public/game/game.html'));
-    }
+    } else res.status(400).send({ error: "Nope" });
   });
 });
 };
