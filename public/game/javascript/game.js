@@ -10,6 +10,8 @@ $(document).ready(function() {
     var card8;
     var card9;
     var card10;
+    var card11;
+    var card12;
     var dealerTotal;
     var playerTotal;
     var cardCount = 0;
@@ -17,6 +19,8 @@ $(document).ready(function() {
     var dealerAce;
     var cardsPlayed = 0;
     var show = true;
+    var playerCards = [];
+    var dealerCards = [];
     function getCard() {
         let index = Math.floor(Math.random()*52);
         var card = cards[index];
@@ -36,7 +40,7 @@ $(document).ready(function() {
         $('#draw').toggle();
         $('#hit').toggle();
         $('#stay').toggle();
-        $('#message').toggleClass("toggle");
+        $('#message').removeClass("toggle");
     }
 
     function win() {
@@ -45,7 +49,7 @@ $(document).ready(function() {
         $('#draw').toggle();
         $('#hit').toggle();
         $('#stay').toggle();
-        $('#message').toggleClass("toggle");
+        $('#message').removeClass("toggle");
     }
 
     function blackJack() {
@@ -57,6 +61,7 @@ $(document).ready(function() {
             win();
         } else push();
         $('#message').text("Black Jack!");
+        playerTotal += 10;
     }
 
     function push() {
@@ -65,7 +70,7 @@ $(document).ready(function() {
         $('#draw').toggle();
         $('#hit').toggle();
         $('#stay').toggle();
-        $('#message').toggleClass("toggle");
+        $('#message').removeClass("toggle");
     }
 
     function Card(name, suit, value) {
@@ -97,16 +102,24 @@ $(document).ready(function() {
         }
         clearBoard();
         $('#draw').toggle();
-        $('#message').toggleClass("toggle");
+        $('#message').addClass("toggle");
         var newCard = '<div class="card"></div>';
         card1 = getCard();
+        dealerCards.push(card1);
         cardCount++;
         card2 = getCard();
+        dealerCards.push(card2);
         cardCount++;
         card3 = getCard();
+        playerCards.push(card3);
         cardCount++;
         card4 = getCard();
+        playerCards.push(card4);
         cardCount++;
+        
+        console.log(playerCards);
+        console.log(dealerCards);
+
         $('#dealer-cards').append((`<div class="card">????????</div>`));
         $('#player-cards').append((`<div class="card">${card3.name} ${card3.suit}</div>`));
         $('#dealer-cards').append((`<div class="card">${card2.name} ${card2.suit}</div>`));
@@ -118,7 +131,7 @@ $(document).ready(function() {
             playerAce = true;
             playerTotal = card3.value + card4.value;
             if (playerTotal === 11) {
-                
+                blackJack();
             }
             if (playerTotal < 11) {
                 playerTotal += 10;
@@ -132,29 +145,34 @@ $(document).ready(function() {
         $('#player-total').append(`${playerTotal}`);
     });
 
+    // for the hit button
     $('#hit').click(function() {
         if (cardCount === 4) {
             card5 = getCard();
+            playerCards.push(card5);
             playerTotal += card5.value;
             $('#player-cards').append((`<div class="card">${card5.name} ${card5.suit}</div>`));
             cardCount++;
         } else if (cardCount === 5) {
             card6 = getCard();
+            playerCards.push(card6);
             playerTotal += card6.value;
             $('#player-cards').append((`<div class="card">${card6.name} ${card6.suit}</div>`));
             cardCount++;
         } else if (cardCount === 6) {
             card7 = getCard();
+            playerCards.push(card7);
             playerTotal += card7.value;
             $('#player-cards').append((`<div class="card">${card7.name} ${card7.suit}</div>`));
             cardCount++;
         } else if (cardCount === 7) {
             card8 = getCard();
+            playerCards.push(card8);
             playerTotal += card8.value;
             $('#player-cards').append((`<div class="card">${card8.name} ${card8.suit}</div>`));
             cardCount++;
         }
-
+        console.log(playerCards);
         $('#player-total').empty();
         $('#player-total').append(`${playerTotal}`);
         if (playerTotal > 21) {
@@ -167,6 +185,7 @@ $(document).ready(function() {
         }
     });
 
+    // For the stay button
     $('#stay').click(function() {
         $('#dealer-cards').empty();
         $('#dealer-cards').append((`<div class="card">${card1.name} ${card1.suit}</div>`));
@@ -183,15 +202,31 @@ $(document).ready(function() {
 
         if (dealerTotal < 17) {
             card9 = getCard();
+            dealerCards.push(card9);
             cardCount++;
             dealerTotal += card9.value;
             $('#dealer-cards').append((`<div class="card">${card9.name} ${card9.suit}</div>`));
         }
         if (dealerTotal < 17) {
             card10 = getCard();
+            dealerCards.push(card10);
             cardCount++;
             dealerTotal += card10.value;
             $('#dealer-cards').append((`<div class="card">${card10.name} ${card10.suit}</div>`));
+        }
+        if (dealerTotal < 17) {
+            card11 = getCard();
+            dealerCards.push(card11);
+            cardCount++;
+            dealerTotal += card11.value;
+            $('#dealer-cards').append((`<div class="card">${card11.name} ${card11.suit}</div>`));
+        }
+        if (dealerTotal < 17) {
+            card12 = getCard();
+            dealerCards.push(card12);
+            cardCount++;
+            dealerTotal += card12.value;
+            $('#dealer-cards').append((`<div class="card">${card12.name} ${card12.suit}</div>`));
         }
         $('#dealer-total').empty();
         $('#dealer-total').append(`${dealerTotal}`);
@@ -218,15 +253,33 @@ $(document).ready(function() {
         cardCount = 0;
         dealerTotal = 0;
         playerTotal = 0;
+        playerCards = [];
+        dealerCards = [];
     }
 
     function shuffle() {
         for (var i = 0; i < 52; i++) {
             cards[i].played = false;
-            $('#message').show();
-            $('#message').text("Shuffling next Hand");
-            cardsPlayed = 0;
+        }
+        $('#message').removeClass("toggle");
+        $('#message').text("\nShuffling next Hand");
+        cardsPlayed = 0;
+    }
+
+    function ifAce(playerTotal) {
+        for (var i = 0; i < playerCards.length; i++) {
+            if (playerCards[i] === 1) {
+                playerAce = true;
+                return playerTotal -= 10;
+            }
         }
     }
 });
 
+// use array of cards to display images.
+// work on the ace problem.
+//set timeout for shuffle and deactivate buttons 
+// add double down and split options
+//dealer blackjack and insurance
+// shuffle problem DONE
+// add database credits
