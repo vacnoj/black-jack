@@ -36,7 +36,7 @@ $(document).ready(function() {
         $('#draw').toggle();
         $('#hit').toggle();
         $('#stay').toggle();
-        $('#message').toggle();
+        $('#message').toggleClass("toggle");
     }
 
     function win() {
@@ -45,7 +45,7 @@ $(document).ready(function() {
         $('#draw').toggle();
         $('#hit').toggle();
         $('#stay').toggle();
-        $('#message').toggle();
+        $('#message').toggleClass("toggle");
     }
 
     function blackJack() {
@@ -65,7 +65,7 @@ $(document).ready(function() {
         $('#draw').toggle();
         $('#hit').toggle();
         $('#stay').toggle();
-        $('#message').toggle();
+        $('#message').toggleClass("toggle");
     }
 
     function Card(name, suit, value) {
@@ -97,7 +97,7 @@ $(document).ready(function() {
         }
         clearBoard();
         $('#draw').toggle();
-        $('#message').toggle();
+        $('#message').toggleClass("toggle");
         var newCard = '<div class="card"></div>';
         card1 = getCard();
         cardCount++;
