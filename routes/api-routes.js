@@ -1,5 +1,6 @@
 
 var db = require("./../models");
+var path = require('path');
 var users = [];
 
 module.exports = function(app) {
@@ -26,6 +27,16 @@ module.exports = function(app) {
       res.json(results);
     });
   });
-};
 
-// app.get("/")
+app.post("/blackjack", function(req, res) {
+  let username;
+  console.log(req.body);
+  db.User.findOne({ where: {username: req.body.username, password: req.body.password} 
+  }).then(function(results) {
+    console.log(results);
+    if (results) {
+      res.sendFile(path.join(__dirname + '/../public/game/game.html'));
+    }
+  });
+});
+};

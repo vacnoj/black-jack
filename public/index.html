@@ -53,11 +53,13 @@
 
     <div id="login-div">
       <h4>Log In</h4>
-      <label for="user-name">User Name</label>
-      <input id="user-name" type="text" class="validate">
+      
+      <form method="post" action="/blackjack"><label for="user-name">User Name</label>
+      <input id="user-name" name="username" type="text" class="validate">
       <label for="user-password">Password</label>
-      <input id="user-password" type="password" class="validate">
-      <button id="login">login</button>
+      <input id="user-password" name="password" type="password" class="validate">
+      <button id="login">login</button></form>
+
     </div>
   </div>
 
