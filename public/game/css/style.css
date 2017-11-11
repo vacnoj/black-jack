@@ -1,4 +1,4 @@
-#login-div {
+.container {
     width: 50%;
     text-align: center;
     margin: auto;
@@ -6,10 +6,11 @@
 }
 
 nav {
-    background: magenta;
+    background: brown;
 }
 
 .card {
+    margin: auto;
     display: inline-block;
     border: black solid;
     padding: 2%;
