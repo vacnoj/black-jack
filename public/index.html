@@ -38,12 +38,13 @@
     <div id="createAccountModal" class="modal">
       <div class="modal-content">
         <h4>Create Account</h4>
-          <div> 
-            <label for="new-user">User Name</label>
+          <div class="input-field">
             <input id="new-user" type="text" class="validate">
-  
-            <label for="new-password">Password</label>
+            <label for="new-user">User Name</label>
+          </div>
+          <div class="input-field">
             <input id="new-password" type="password" class="validate">
+            <label for="new-password">Password</label>
           </div>
         </div>
       <div class="modal-footer">
@@ -54,10 +55,15 @@
     <div id="login-div">
       <h4>Log In</h4>
       
-      <form method="post" action="/blackjack"><label for="user-name">User Name</label>
-      <input id="user-name" name="username" type="text" class="validate">
-      <label for="user-password">Password</label>
-      <input id="user-password" name="password" type="password" class="validate">
+      <form method="post" action="/blackjack">
+        <div class="input-field">
+          <input id="user-name" name="username" type="text" class="validate">
+          <label for="user-name">User Name</label>
+        </div>
+        <div class="input-field">
+          <input id="user-password" name="password" type="password" class="validate">
+          <label for="user-password">Password</label>
+        </div>
       <button id="login">login</button></form>
 
     </div>

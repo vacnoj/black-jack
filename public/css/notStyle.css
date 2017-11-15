@@ -6,7 +6,7 @@
 }
 
 input, label {
-    text-align: center;
+    text-align: center !important;
     font-size: 20px !important;
 }
 nav {
@@ -15,9 +15,6 @@ nav {
 
 body {
     background-image:url("../images/cardtable-background.jpg");
-    /* background-repeat: no-repeat; */
     background-attachment: fixed;
     background-position: center; 
-    /* background-size: auto;  */
 }
-
