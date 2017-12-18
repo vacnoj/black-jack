@@ -1,5 +1,5 @@
 .container {
-    width: 50%;
+    width: 75%;
     text-align: center;
     margin: auto;
     border: dashed black;
@@ -26,4 +26,12 @@ body {
 
 .toggle {
     visibility: hidden;
+}
+
+h3 {
+    margin: 0;
+}
+
+.buttons {
+    margin-top: 10px;
 }
