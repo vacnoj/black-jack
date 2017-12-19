@@ -37,7 +37,9 @@ $(document).ready(function() {
         $('#dealer-cards').empty();
         $('#dealer-cards').append((`<div class="card"><img src="${card1.image}"></div>`));
         $('#dealer-cards').append((`<div class="card"><img src="${card2.image}"></div>`));
-        dealerTotal += card1.value;
+        if (playerTotal > 21) {
+            dealerTotal += card1.value;
+        }
         $('#dealer-total').text(dealerTotal);
         $('#message').text("You Lose");
         show = false;
