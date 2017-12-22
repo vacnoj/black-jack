@@ -1,4 +1,11 @@
 $(document).ready(function() {
+   console.log(User);
+    //this will hide the buttons that are not being used/ not relevant
+    $('#hit').hide();
+    $('#stay').hide();
+    $('#double').hide();
+    $('#split').hide();
+
     var cards = [];
     var card1;
     var card2;
@@ -12,13 +19,14 @@ $(document).ready(function() {
     var card10;
     var card11;
     var card12;
+    var card13, card14, card15, card16;
     var dealerTotal;
     var playerTotal;
     var cardCount = 0;
     var playerAce;
     var dealerAce;
     var cardsPlayed = 0;
-    var show = true;
+    var show = false;
     var playerCards = [];
     var dealerCards = [];
     function getCard() {
@@ -46,6 +54,7 @@ $(document).ready(function() {
         $('#draw').toggle();
         $('#hit').toggle();
         $('#stay').toggle();
+        $('#double').hide();
         $('#message').removeClass("toggle");
     }
 
@@ -55,6 +64,7 @@ $(document).ready(function() {
         $('#draw').toggle();
         $('#hit').toggle();
         $('#stay').toggle();
+        $('#double').hide();
         $('#message').removeClass("toggle");
     }
 
@@ -76,7 +86,11 @@ $(document).ready(function() {
         $('#draw').toggle();
         $('#hit').toggle();
         $('#stay').toggle();
+        $('#double').hide();
         $('#message').removeClass("toggle");
+    }
+
+    function double() {
     }
 
     function Card(name, suit, value, image) {
@@ -86,15 +100,16 @@ $(document).ready(function() {
         this.played = false;
         this.image = image;
     }
-    var blank = new Card(blank, null, null, 'game/cardDeck/blank.png');
+    var blank = new Card(blank, null, null, 'cardDeck/blank.png');
+
     function deck() {
         var names = ['14','2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'];
         var suits = ['c', 's', 'd', 'h'];
         for (var n  = 0; n < names.length; n++) {
             for(var s = 0; s < suits.length; s++) {
                 if (n >= 9 ) {
-                    cards.push(new Card(names[n], suits[s], 10, `game/cardDeck/${names[n]}${suits[s]}.png`));    
-                } else cards.push(new Card(names[n], suits[s], n + 1, `game/cardDeck/${names[n]}${suits[s]}.png`));
+                    cards.push(new Card(names[n], suits[s], 10, `cardDeck/${names[n]}${suits[s]}.png`));    
+                } else cards.push(new Card(names[n], suits[s], n + 1, `cardDeck/${names[n]}${suits[s]}.png`));
             }
         }
         // $('#profile').text(JSON.stringify(cards));
@@ -123,7 +138,12 @@ $(document).ready(function() {
         card4 = getCard();
         playerCards.push(card4);
         cardCount++;
-        
+       
+        //Use this for split function
+        // if (card3.name === card4.name) {
+            
+        // }
+
         console.log(playerCards);
         console.log(dealerCards);
 
@@ -150,10 +170,19 @@ $(document).ready(function() {
             $('#dealer-total').append(`ACE showing!`);
         } else $('#dealer-total').append(`${dealerTotal} showing!`);
         $('#player-total').append(`${playerTotal}`);
+
+        $('#double').toggle();
     });
 
+    
+    $('#double').click(function() {
+        // you can only hit once.
+        // bet double
+        // 
+    });
     // for the hit button
     $('#hit').click(function() {
+        $('#double').toggle();
         if (cardCount === 4) {
             card5 = getCard();
             playerCards.push(card5);

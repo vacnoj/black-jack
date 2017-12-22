@@ -16,10 +16,10 @@
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
    <!-- javascript -->
-   <script src="/game/javascript/game.js"></script>
+   <script src="javascript/game.js"></script>
 
    <!-- CSS -->
-   <link rel="stylesheet" href="/game/css/style.css">
+   <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
@@ -27,14 +27,14 @@
         <div class="nav-wrapper">
             <a href="#" class="brand-logo center">Black Jack</a>
             <ul id="nav-mobile" class="right">
-            <li><a class="waves-effect waves-light modal-trigger" href="#tutorial-modal"><i class="material-icons">help_outline</i></a></li>
+                Credits: <span id="credits"></span>
             </ul>
         </div>
     </nav>
     <div class="container">
         <div>
             <chip id="profile">
-
+                
             </chip>
         
         </div>
@@ -62,9 +62,20 @@
             <button id="draw">Draw</button>
             <button id="hit">Hit</button>
             <button id="stay">Stay</button>
+            <button id="split">Split</button>
+            <button id="double">Double</button>
         </div>
         <div>
             <h5 id="message"></h5>
+        </div>
+
+        <div class="player-chips">
+            <div class="row">
+                
+            </div>
+            <div class="row">
+                Bet: <span id="bet"></span>
+            </div>
         </div>
     </div>
 </body>
